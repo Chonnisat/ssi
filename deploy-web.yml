@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ssi
+  name: staff
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ssi
+      app: staff
   template:
     metadata:
       labels:
-        app: ssi
+        app: staff
     spec:
       containers:
-        - name: ssi-server
+        - name: staff-server
           image: ghcr.io/chonnisat/ssi
           ports:
             - containerPort: 80
@@ -21,12 +21,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-service
+  name: staff-service
   labels:
-    app: hello-service
+    app: staff-service
 spec:
   selector:
-    app: ssi
+    app: staff
   ports:
     - name: web-port
       protocol: TCP
