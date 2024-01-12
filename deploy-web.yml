@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: staff-service
+  name: staff
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: staff-service
+      app: staff
   template:
     metadata:
       labels:
-        app: staff-service
+        app: staff
     spec:
       containers:
         - name: staff-service-server
           image: ghcr.io/chonnisat/ssi
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 ---
@@ -26,7 +27,7 @@ metadata:
     app: staff-service
 spec:
   selector:
-    app: staff-service
+    app: staff
   ports:
     - name: http
       protocol: TCP
